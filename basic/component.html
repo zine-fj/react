@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component1</title>
+    <script src="../js/react.min.js"></script>
+    <script src="../js/react-dom.min.js"></script>
+    <script src="../js/browser.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        let Header = React.createClass({
+            render:function(){
+                return (
+                    <header>{this.props.tit}</header>
+                )
+            }
+        })
+        
+        
+        let arr = ['apple','orange','banana'];
+        let List = React.createClass({
+            render:function(){
+                return (
+                    <ul>
+                        {
+                            arr.map((val,index)=>{
+                                return <li key={index}>{val}</li>
+                            })
+                        }
+                    </ul>
+                )
+            }
+        })
+        let Content = React.createClass({
+            render:function(){
+                return (
+                    <div className="content">
+                        {this.props.children}
+                    </div>
+                )
+            }
+        })
+        let Footer = React.createClass({
+            render:function(){
+                return (
+                    <footer>footer</footer>
+                )
+            }
+        })
+
+        ReactDOM.render(
+            <div>
+                <Header tit="首页"/>
+                <Content title='这是页面内容区域'>
+                    <div>没有内容</div>
+                    <List />
+                </Content>
+                
+                <Footer />
+            </div>,
+            
+            document.getElementById('root')
+        )
+
+        // props 可以给组件传递数据 
+        // this.props.children 是组件的子节点属性
+        // this.props.xxx 是组件标签添加的自定义属性 
+        // 类名应该使用className
+    </script>
+</body>
+</html>

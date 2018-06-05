@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hello</title>
+    <script src="../js/react.min.js"></script>
+    <script src="../js/react-dom.min.js"></script>
+    <script src="../js/browser.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        //jsx (xml) 语法  // babel 可以把jsx es6转换成es5
+        // xml 必须有标签闭合，必须有根节点
+        // ReactDOM.render(
+        //     <h1>hello word</h1>,
+        //     document.getElementById('root')
+        // )
+
+        let arr = ['apple','orange','banana'];
+        ReactDOM.render(
+            <div>
+                {
+                    arr.map((val,index)=>{
+                        return <li key={index}>{val}</li>
+                    })
+                }
+            </div>,
+
+            document.getElementById('root')
+        )
+    </script>
+</body>
+</html>
