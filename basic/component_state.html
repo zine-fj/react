@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>state</title>
+    <script src="../js/react.min.js"></script>
+    <script src="../js/react-dom.min.js"></script>
+    <script src="../js/browser.min.js"></script>
+    <style>
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        let SwitchComponent = React.createClass({
+            // 设置初始的状态(写法固定的)
+            getInitialState() {
+                return {
+                    show: false
+                }
+            },
+            handleClick() {
+                alert(1)
+            },
+            changeState() {
+                // 通过setState 去修改state, 视图会自动更新，不需要操作dom
+                this.setState({
+                    show: !this.state.show
+                })
+            },
+            render() {
+                return (
+                    <div>
+                        <button onClick={this.changeState}>按钮</button>
+                        <p className={this.state.show?'':'hide'}>我是文字</p>
+                        <p onClick={this.handleClick}>点我弹一</p>
+                    </div>
+                )
+            }
+        })
+        
+        ReactDOM.render(
+            <SwitchComponent />,
+            document.getElementById('root')
+        )
+    </script>
+</body>
+</html>
