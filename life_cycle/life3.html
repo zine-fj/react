@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>life3 销毁期</title>
+    <script src="../js/react.min.js"></script>
+    <script src="../js/react-dom.min.js"></script>
+    <script src="../js/browser.min.js"></script>
+    <style>
+        .hide{
+            display: none;
+        }
+        .text{
+            color: skyblue;
+            font-size: 20px;
+            line-height: 2;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        let Cont = React.createClass({
+            componentWillMount() {
+                this.timer = setInterval(()=>{
+                    console.log('定时器')
+                },1000)
+            },
+            render() {
+                return <p className='text'>内容</p>
+            },
+            componentWillUnmount() {
+                console.log('组件卸载的时候把自己的定时器也干掉')
+                clearInterval(this.timer)
+            }
+        })
+        let SwitchComponent = React.createClass({
+            getInitialState() {
+                return {
+                    show:false
+                }
+            },
+            changeState() {
+                // react提供的修改状态的方法
+                this.setState({
+                    show:!this.state.show
+                })
+            },
+            render() {
+                return <div>
+                        <button onClick={this.changeState}>点我</button>
+                        {this.state.show?<Cont />:''}
+                </div>
+            }
+        })
+        
+        ReactDOM.render(
+            <SwitchComponent />,
+            document.getElementById('root')
+        )
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>life2 存在期</title>
+    <script src="../js/react.min.js"></script>
+    <script src="../js/react-dom.min.js"></script>
+    <script src="../js/browser.min.js"></script>
+    <style>
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        let SwitchComponent = React.createClass({
+            getInitialState() {
+                return {
+                    show:false
+                }
+            },
+            changeState() {
+                // react提供的修改状态的方法
+                this.setState({
+                    show:!this.state.show
+                })
+            },
+            render() {
+                console.log('render')
+                return <div>
+                        <button onClick={this.changeState}>点我</button>
+                        <p className={this.state.show?'':'hide'}>显示隐藏</p>
+                </div>
+            },
+
+            // 可以实现组件更新的控制
+            shouldComponentUpdate() {
+                console.log('shouldComponentUpdate');
+                return true;
+            },
+            componentWillUpdate() {
+                console.log('componentWillUpdate')
+            },
+            componentDidUpdate() {
+                console.log('componentDidUpdate')
+            }
+        })
+        
+        ReactDOM.render(
+            <SwitchComponent />,
+            document.getElementById('root')
+        )
+    </script>
+</body>
+</html>
