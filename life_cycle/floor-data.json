@@ -1,0 +1,18 @@
+[
+    {
+        "title":"推荐商品",
+        "proData":[
+            {"name":"感冒灵","price":99},
+            {"name":"感冒灵","price":99},
+            {"name":"感冒灵","price":99}
+        ]
+    },
+    {
+        "title":"热卖商品",
+        "proData":[
+            {"name":"高跟鞋","price":109},
+            {"name":"高跟鞋","price":109},
+            {"name":"高跟鞋","price":109}
+        ]
+    }
+]
