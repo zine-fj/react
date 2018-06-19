@@ -64,8 +64,8 @@ let IndexPage = React.createClass({
             <div>
                 <Header />
                 <Content>
-                    <div>轮播图</div>
-                    <div>
+                    <div ref="banner" id="banner">轮播图</div>
+                    <div ref="floor-wrap">
                         {
                             floorData.map((ele,index)=>{
                                 return <Floor data={ele}/>
@@ -77,6 +77,9 @@ let IndexPage = React.createClass({
         )
     },
     componentDidMount() {
+        console.log(this.refs)
+        document.getElementById("banner").style.height = "200px" //通过dom方法获取dom节点
+        this.refs["banner"].style.height = "200px" // 直接通过组件的属性使用dom节点
         // 组件渲染完成 获取数据
         fetch("floor-data.json").then(res=>res.json()).then(data=>{
             console.log(data);
