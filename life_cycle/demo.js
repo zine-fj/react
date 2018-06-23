@@ -94,5 +94,5 @@ let IndexPage = React.createClass({
 
 ReactDOM.render(
     <IndexPage />,
-    document.getElementById('root')
+    document.getElementById('root') 
 )
