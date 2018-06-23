@@ -41,9 +41,9 @@ render:() {
     return <input type="text" value="" />
 }
 
-# 不受限组件
+# 不受限组件(当username是state时，可以动态的改变value值)
 render:() {
-    return <input type="text" />
+    return <input type="text" value={username}/>
 }
 
 # 默认属性支持
