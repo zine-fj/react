@@ -71,4 +71,4 @@ ev.target.value = val
 ```
 注意：   
 1、react是尽量避免进行DOM操作的，主要操作数据、状态...，状态改变，视图自动更新   
-2、通过state保存数据，通过props传递数据
+2、通过state保存数据，通过props传递数据  
