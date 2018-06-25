@@ -75,3 +75,14 @@ global event bus：全局事件总线
 方法二：  
 通过其他框架实现，  
 Flux : Fackbook 提出的管理React数据流的框架。Flux 不像一个框架，更像是一种组织代码的推荐思想。就像 "引导数据流流向的导流管"。其他的"导流管"：ReFlux，Redux等。
+
+## 小结
+1. 父组件控制子组件
+通过props传递数据
+2. 子组件改变父组件的state
+调用父组件的方法 ``this.props.changeNumber`` (需要父组件给子组件传递方法)
+3. 兄弟组件通信
+中间人模式(子组件1 改 父组件，父组件 改 子组件2)
+4. 无关系组件
+触发：emit('changeNumber',100)  
+监听：on('changeNumber',function(){})
