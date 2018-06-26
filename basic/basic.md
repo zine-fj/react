@@ -76,3 +76,12 @@ React 起源于 Facebook 的内部项目，因为该公司对市场上所有 Jav
 1、getInitialState：设置初始状态  
 2、setState：设置状态  
 3、handleClick：点击  
+
+## 安装react脚手架
+```shell
+cnpm i -g create-react-app
+create-react-app my-app
+
+cd my-app
+npm start
+```
