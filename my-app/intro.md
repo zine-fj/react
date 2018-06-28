@@ -58,8 +58,31 @@ function Content(props) {
 ```
 
 ## 路由
-原理：根据url输入不同内容  
-1. 安装
+1. 路由原理：通过 onhashchange 事件去监听 hash 值("#/list")改变，然后渲染hash值对应的组件(ListPage)  
+```shell
+window.onhashchange = function() {
+    console.log(window.location.hash)
+}
+```
+2. 安装
 ```shell
 yarn add react-router@3
+```
+3. 代码
+``` shell
+const App = () =>{
+    return <Router history={hashHistory}>
+        <Route path="/" component={HomePage} />
+        <Route path="/list" component={ListPage} />
+        <Route path="/cart" component={CartPage} />
+    </Router>
+}
+```
+4. 解析
+* Router 是路由的壳子，所有要用的路由管理页面都需要放在Router里面(Router里面只能放Route)。
+* history 是对历史进行管理，一般使用 hashHistory
+* Route 是路由要管理的页面；path 是路径 '/' 是默认路径；component 是当前路径使用的组件
+* Link 跳转(activeClassName 设置选中样式)，实际上就是被封装的a标签
+```shell
+<Link to="/list" activeClassName="active">Link to list</link>
 ```

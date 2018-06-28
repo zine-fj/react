@@ -6,49 +6,10 @@ import {Router,Route,hashHistory} from "react-router"
 // 索引的文件不用加文件名
 // import Header from "./components/public"
 // import Content from "./components/public"
-import {Header,Content,Footer} from "./components/public"
 
-class HomePage extends Component {
-    render() {
-        return (
-            <div>
-                <Header> 首页 </Header>
-                <Content tit='22'>
-                    首页内容
-                </Content>
-                <Footer></Footer>
-            </div> 
-        )
-    }
-}
-
-class ListPage extends Component {
-    render() {
-        return (
-            <div>
-                <Header> 商品列表 </Header>
-                <Content tit='22'>
-                    商品列表内容
-                </Content>
-                <Footer></Footer>
-            </div> 
-        )
-    }
-}
-
-class CartPage extends Component {
-    render() {
-        return (
-            <div>
-                <Header> 购物车 </Header>
-                <Content tit='22'>
-                    购物车内容
-                </Content>
-                <Footer></Footer>
-            </div> 
-        )
-    }
-}
+import HomePage from "./routes/HomePage"
+import ListPage from "./routes/ListPage"
+import CartPage from "./routes/CartPage"
 
 const App = () =>{
     return <Router history={hashHistory}>
@@ -64,6 +25,7 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
+// 路由原理：通过 onhashchange 事件去监听 hash 值("#/list")改变，然后渲染hash值对应的组件(ListPage)
 window.onhashchange = function() {
-    console.log(window.loacation.hash)
+    console.log(window.location.hash)
 }

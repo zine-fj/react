@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import "./public.css"
+import {Link } from "react-router"
 
 class Header extends Component {
     render() {
@@ -27,9 +28,9 @@ class Footer extends Component {
         return (
             <div className="footer">
                 <ul>
-                    <li><a href="">首页</a></li>
-                    <li><a href="">列表</a></li>
-                    <li><a href="">购物车</a></li>
+                    <li><a href="#/">首页</a></li>
+                    <li><a href="#/list">列表</a></li>
+                    <li><Link to="/cart" activeClassName="active">购物车</Link></li>
                     <li><a href="">我的</a></li>
                     <li><a href="">更多</a></li>
                 </ul>
