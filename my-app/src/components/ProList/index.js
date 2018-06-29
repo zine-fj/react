@@ -1,5 +1,7 @@
 import React,{Component} from "react"
 import './pro-list.css'
+import {Link} from "react-router"
+
 class ProList extends Component {
     render() {
         return (
@@ -7,8 +9,10 @@ class ProList extends Component {
                 {
                     this.props.listData.map((ele,index)=>(
                         <li key={index} className="pro-item">
-                            <img src={ele.goodsListImg} alt=""/>
-                            <p>{ele.goodsName}</p>
+                            <Link to={'/detail/'+ ele.goodsID}>
+                                <img src={ele.goodsListImg} alt=""/>
+                                <p>{ele.goodsName}</p>
+                            </Link>
                         </li>
                     ))
                 }

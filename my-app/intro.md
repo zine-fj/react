@@ -86,3 +86,17 @@ const App = () =>{
 ```shell
 <Link to="/list" activeClassName="active">Link to list</link>
 ```
+
+## 引入插件
+就像之前说的，想引用谁，通过 包管理工具 ``npm``安装，然后引用就行了，比如引用 swiper  
+1. 安装
+```shell
+# 注意：yarn 不行的话用 cnpm 试试
+yarn add swiper
+```
+2. 引用
+```shell
+import Swiper from "swiper"
+import "swiper/dist/css/swiper.min.css"
+```
+3. 根据api书写页面

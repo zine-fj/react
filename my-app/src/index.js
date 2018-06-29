@@ -1,50 +1,28 @@
 import React,{Component} from "react"
 import ReactDOM from "react-dom"
-//const {Component}  = React
-//commonjs(同步)   //AMD（异步）
-import {Header,Content,Footer} from "./components/public"
+import {Router,Route,hashHistory} from "react-router"
 
-class HomePage extends Component {
-  render(){
-    return (
-      <div>
-        <Header>首页</Header>
-        <Content tit="22">
-          首页内容
-        </Content>
-        <Footer></Footer>
-      </div>
-    )
-  }
+import HomePage from "./routes/HomePage"
+import ListPage from "./routes/ListPage"
+import CartPage from "./routes/CartPage"
+import LoginPage from "./routes/LoginPage"
+import DetailPage from "./routes/DetailPage"
+
+const App = ()=>{
+    return <Router history={hashHistory}>
+        <Route path="/" component={HomePage} />
+        <Route path="/list" component={ListPage} />
+        <Route path="/cart" component={CartPage} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/detail/:goodsID" component={DetailPage} />
+    </Router>
 }
 
-class ListPage extends Component {
-  render(){
-    return (
-      <div>
-        <Header>商品列表</Header>
-        <Content tit="22">
-          商品列表的内容
-        </Content>
-        <Footer></Footer>
-      </div>
-    )
-  }
+ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+)
+
+window.onhashchange = function() {
+    console.log(window.location.hash)
 }
-
-class CartPage extends Component {
-  render(){
-    return (
-      <div>
-        <Header>购物车</Header>
-        <Content tit="22">
-          购物车的内容
-        </Content>
-        <Footer></Footer>
-      </div>
-    )
-  }
-}
-
-
-ReactDOM.render(<CartPage />, document.getElementById('root'));

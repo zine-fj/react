@@ -3,6 +3,10 @@
     font-size: 0;
     border-bottom: 1px solid #ccc;
     white-space: nowrap;
+    position: absolute;
+    left: 0;
+    top: 44px;
+    width: 100%;
 }
 .class-list li {
     display: inline-block;

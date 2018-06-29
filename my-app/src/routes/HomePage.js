@@ -5,8 +5,8 @@ class HomePage extends Component {
     render() {
         return (
             <div>
-                <Header>首页</Header>
-                <Content tit="小尾巴">
+                <Header hasBack={false} rightCont={<a>消息</a>}>首页</Header>
+                <Content>
                     首页内容
                 </Content>
                 <Footer />

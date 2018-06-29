@@ -44,7 +44,7 @@ class ListPage extends Component {
                 {/* 箭头函数的解决办法
                 <ClassList classData={classData} getProData={(id)=>this.getProData(id)}></ClassList>
                  */}
-                <Content tit="小尾巴">
+                <Content>
                 <ProList listData={listData} />
                 </Content>
                 <Footer />

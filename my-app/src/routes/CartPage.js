@@ -6,7 +6,7 @@ class CartPage extends Component {
         return (
             <div>
                 <Header>购物车</Header>
-                <Content tit="小尾巴">
+                <Content>
                     购物车内容
                 </Content>
                 <Footer />

@@ -1,0 +1,16 @@
+.pro-list{
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 86px;
+    height: calc(100% - 136px);
+    overflow-y: auto;
+    width: 100%;
+}
+.pro-list img{
+    width: 200px;
+    height: auto;
+}
+.pro-list p{
+    margin: 10px;
+}
