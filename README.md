@@ -5,4 +5,4 @@
 3. life_cycle： react的生命周期及调用外部数据如何操作
 4. login: react的使用小技巧，表单页面(以登录为例)
 5. props_state： props、state、不同组件之间通信
-6. my-app：通过 ``create-react-app`` 搭建的脚手架，里面有基础页面src-basic、路由页面src-router、具体案例页面src(包括列表页、详情页、轮播图)
+6. my-app：通过 ``create-react-app`` 搭建的脚手架，里面有基础页面src-basic、路由页面src-router、具体案例页面src(包括列表页、详情页、轮播图)。注意：文件名为 src 时，执行 ``yarn start``，项目才会开启
