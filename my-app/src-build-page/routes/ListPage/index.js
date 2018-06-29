@@ -27,12 +27,23 @@ class ListPage extends Component {
         classData:[],
         listData:[]
     }
+    constructor() {
+        super()
+        // 问题：this.setState not a function => es6里面，自定义函数的this可能会发生改变
+
+        // 方案一 在constructor 提前把this绑定好
+        // this.getProData = this.getProData.bind(this)
+    }
     render() {
         const {classData,listData} = this.state
         return (
             <div>
                 <Header>商品</Header>
+                {/* 方案二 在给子组件传递的时候，绑定this */}
                 <ClassList classData={classData} getProData={this.getProData.bind(this)}></ClassList>
+                {/* 箭头函数的解决办法
+                <ClassList classData={classData} getProData={(id)=>this.getProData(id)}></ClassList>
+                 */}
                 <Content tit="小尾巴">
                 <ProList listData={listData} />
                 </Content>
