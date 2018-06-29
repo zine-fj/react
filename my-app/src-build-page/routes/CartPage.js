@@ -1,16 +1,16 @@
 import React,{Component} from "react"
-import {Header,Content,Footer} from "../components/public"
+import {Header,Content,Footer} from '../components/public'
 
 class CartPage extends Component {
     render() {
         return (
             <div>
-                <Header> 购物车 </Header>
-                <Content tit='22'>
+                <Header>购物车</Header>
+                <Content tit="小尾巴">
                     购物车内容
                 </Content>
-                <Footer></Footer>
-            </div> 
+                <Footer />
+            </div>
         )
     }
 }
