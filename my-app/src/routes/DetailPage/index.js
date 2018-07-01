@@ -57,8 +57,8 @@ class DetailPage extends Component {
     componentDidUpdate() {
         // 等获取到数据，组件更新完成后，创建swiper
         // 页面加载完成，需要创建swiper
-        // 因为更新可能会多次触发，所以要判断，如果swiper已经存在，就不需要再创建
-        if(!this.swiper) {
+        // 因为更新可能会多次触发，所以要判断，如果swiper不存在 且 有轮播数据，就不需要再创建
+        if(!this.swiper && this.state.detailData.goodsBenUrl) {
             this.swiper = new Swiper(".swiper-container",{
                 // 如果需要分页器
                 pagination: {
