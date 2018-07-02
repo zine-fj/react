@@ -70,6 +70,8 @@ yarn add react-router@3
 ```
 3. 代码
 ``` shell
+import {Router,Route,hashHistory} from "react-router"
+
 const App = () =>{
     return <Router history={hashHistory}>
         <Route path="/" component={HomePage} />
