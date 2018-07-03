@@ -47,6 +47,20 @@ redux是一个核心的库，提供了数据管理。
 1. 因为在全局页面都会用到 store，所以把 store全局放到 provider里面
 2. 因为现在已经把数据放到store里面管理了，所以用 connect 链接组件和store
 3. 可以写一个辅助函数把store里面的state 传递给组件的props，这样在组件里就可以使用this.props去传递属性，也可以使用this.props.dispathc({}) 派发了
+#### 安装使用
+```shell
+yarn add react-redux
+
+# 在index中
+import {Provider} from 'react-redux'
+<Provider store={store}>
+  <Router>...</Router>
+</Provider>
+
+# 在单独页面index中
+import {connect} from 'react-redux'
+```
+
 ## 其他
 1. 纯函数
 ```shell

@@ -9,17 +9,16 @@ import DetailPage from './routes/DetailPage'
 import store from './store'
 import {Provider} from 'react-redux'
 
-const App = () => {
+const App = ()=>{
     // 通过provider给每个页面都提供store
     return <Provider store={store}>
         <Router history={hashHistory}>
-            <Route path='/' component={HomePage} />
-            <Route path='/list' component={ListPage} />
-            <Route path='/detail/:goodsID' component={DetailPage} />
+            <Route path="/" component={HomePage} />
+            <Route path="/list" component={ListPage} />
+            <Route path="/detail/:goodsID" component={DetailPage} />
         </Router>
     </Provider>
 }
-
 render(
     <App />,
     document.getElementById('root')
