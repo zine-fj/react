@@ -6,7 +6,7 @@
 Redux是JavaScript状态容器，提供可预测化的状态管理(帮你管理数据)  
 Redux 的设计思想很简单，就两句话。
 * Web 应用是一个状态机，视图与状态是一一对应的。
-* 所有的状态，保存在一个对象里面。
+* 所有的状态，保存在一个对象里面。  
 [阮一峰redux](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html)
 #### 需要事先了解的概念
 1. Store 保存数据的地方，可看成一个仓库，整个应用只能有一个Store
