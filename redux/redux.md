@@ -59,11 +59,23 @@ import {Provider} from 'react-redux'
 
 # 在单独页面index中
 import {connect} from 'react-redux'
+
+# 需求：把store里面的state传递给组件，而且要监听store里面的state 
+# 传递store的state给组件的props
+function mapStateToProps(state) {
+    # state：store中的state
+    return {
+        listData:state.listData
+    }
+}
+# 通过connect使用 mapStateToProps 把数据传递给组件的props
+export default connect(mapStateToProps)(ListPage)
 ```
 
 ## 其他
 1. 纯函数
 ```shell
+# reducer就是一个纯函数，以后不用叫 管理者，叫纯函数
 function fn(a) {
     # return a+20  纯函数，因为输出都一样
     # return a+20*Math.random()  不是纯函数，因为输出都不一样
