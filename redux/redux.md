@@ -94,4 +94,11 @@ const store = createStore(
 )
 ```
 
+3. reducer 和 store
+看似这两个是没有关系的，其实创建store的时候，他会自动调用一个 dispatch，``dispatch({type:"INIT"})``，发送一个 INIT 这个action，然后就会把初始的数据拿过来，绑定在store里面
+
+4. 将数据放到store中的优势
+* 记住之前状态
+* 减少和服务器端的请求次数(优化的一种)
+
 

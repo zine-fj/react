@@ -7,12 +7,11 @@ import fetchJsonp from 'fetch-jsonp'
 import Swiper from "swiper"
 import "swiper/dist/css/swiper.min.css"
 
+import {connect} from "react-redux"
+
 class DetailPage extends Component {
-    state = {
-        detailData: {}
-    }
     render() {
-        const { detailData } = this.state
+        const { detailData } = this.props
         let goodsBenUrl = JSON.parse(detailData.goodsBenUrl || "[]")
         return (
             <div className="detail">
@@ -20,7 +19,6 @@ class DetailPage extends Component {
                 <Content>
                     <div className="swiper-container">
                         <div className="swiper-wrapper">
-                            
                             {
                                 goodsBenUrl.map((ele, index) => {
                                     return <div key={index} className="swiper-slide">
@@ -30,7 +28,6 @@ class DetailPage extends Component {
                             }
                            
                         </div>
-                        {/* 如果需要滚动条 */}
                         <div className="swiper-pagination"></div>
                     </div>
                     {detailData.detail}
@@ -43,22 +40,11 @@ class DetailPage extends Component {
         // console.log(window.location.hash)
         console.log(this.props.params.goodsID)
         // console.log(this.props.location.query) // 获取(search)?传递的参数
-
         var id = this.props.params.goodsID
-
-        fetchJsonp('http://datainfo.duapp.com/shopdata/getGoods.php?goodsID=' + id).then
-        (res => res.json()).then(data => {
-            console.log(data)
-            this.setState({
-                detailData: data[0]
-            })
-        })
-    }
+        this.props.getDetailData(id)
+    }   
     componentDidUpdate() {
-        // 等获取到数据，组件更新完成后，创建swiper
-        // 页面加载完成，需要创建swiper
-        // 因为更新可能会多次触发，所以要判断，如果swiper不存在 且 有轮播数据，就不需要再创建
-        if(!this.swiper && this.state.detailData.goodsBenUrl) {
+        if(!this.swiper && this.props.detailData.goodsBenUrl) {
             this.swiper = new Swiper(".swiper-container",{
                 // 如果需要分页器
                 pagination: {
@@ -70,4 +56,29 @@ class DetailPage extends Component {
     }
 }
 
-export default DetailPage
+function mapStateToProps(state) {
+    // 把store里面的state.detailData获取过来
+    return {
+        detailData:state.detailData
+    }
+}
+
+// 想要修改 store 数据的方法 传递 到组件的props
+function mapDispatchToProps(dispatch) {
+    return {
+        getDetailData(id) {
+            fetchJsonp('http://datainfo.duapp.com/shopdata/getGoods.php?goodsID=' + id).then
+            (res => res.json()).then(data => {
+                console.log(data)
+                dispatch({
+                    type:"PRO_DETAIL_DATA",
+                    payload:{
+                        detailData:data[0]
+                    }
+                })
+            })
+        }
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(DetailPage)
