@@ -28,7 +28,7 @@ plugins:[['import', { libraryName: 'antd-mobile', style: 'css' }]]
 <img style={{width:'100%',height:'auto'}} src={require('../../assets/1.jpg')} alt=""/>
 ```
 
-####开发环境(暴露配置项)
+#### 开发环境(暴露配置项)
 由于 create-react-app 为了“优雅”... ...隐藏了所有的webpack相关的配置文件，需要执行：
 ```shell
 yarn run eject
