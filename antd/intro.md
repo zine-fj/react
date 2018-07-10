@@ -33,7 +33,7 @@ plugins:[['import', { libraryName: 'antd-mobile', style: 'css' }]]
 ```shell
 yarn run eject
 ```
-**注意：在执行之前要确定你的代码已经提交(commit)了，否则会报错**
+** 注意：在执行之前要确定你的代码已经提交(commit)了，否则会报错 **
 然后查看项目结构多了scripts和config目录，package.json也会有变化  
 
 * config：项目配置文件：包含环境、路径、补丁、webpack的配置文件。主要维护webpack的两个配置文件
