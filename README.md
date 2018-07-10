@@ -8,3 +8,18 @@
 6. my-app：通过 ``create-react-app`` 搭建的脚手架，里面有基础页面src-basic、路由页面src-router、具体案例页面src(包括列表页、详情页、轮播图)。  
 注意：文件名为 src 时，执行 ``yarn start``，项目才会开启  
 7. redux： redux含义及简单应用，react-redux简单应用及具体案例
+8. antd：antd-mobile引用
+
+
+# 目前安装的模块依赖
+```shell
+react-router@3  # 路由
+fetch-jsonp     # jsonp
+redux           # 数据管理
+react-redux     # react数据管理
+redux-promise 
+antd-mobile     # 支付宝控件
+babel-plugin-import  # 按需加载样式
+qs 
+rc-form
+```
