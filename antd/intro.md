@@ -53,6 +53,23 @@ yarn run eject
   }
 }
 ```
+**注意：**    
+当所存储的为一对象时
+```shell
+this.setState({
+  datas:{
+    floorData:[{},{},{}]
+    }
+})
+```
+
+```shell
+const {floorData} = this.state.datas
+
+# 默认数据里面如果没有floorData，不执行循环(以下代码判断是否为真)
+floorData && floorData.map((ele,index)=>())
+```
+
 
 
 
