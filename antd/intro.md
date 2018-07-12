@@ -54,7 +54,7 @@ yarn run eject
 }
 ```
 **注意：**    
-当所存储的为一对象时
+1. 当所存储的为一对象时
 ```shell
 this.setState({
   datas:{
@@ -69,6 +69,28 @@ const {floorData} = this.state.datas
 # 默认数据里面如果没有floorData，不执行循环(以下代码判断是否为真)
 floorData && floorData.map((ele,index)=>())
 ```
+
+2. 让页面携带 cookie
+```shell
+fetch('',{
+  method:'post',
+  credentials: 'include'
+})
+```
+3. 设置自身cookie为别人网站cookie
+* 在他人网站调试页面打印 ``document.cookie``，将内容复制
+* 在自己网站调试页面执行
+```shell
+function setCookie(str) {
+	var arr = str.split("; ");
+	arr.forEach(function(element) {
+		document.cookie = element
+	});
+}
+
+setCookie(复制的内容)
+```
+* 在自己网站调试页面就能看到和他人网站一样的 cookie信息
 
 
 

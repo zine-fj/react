@@ -1,0 +1,8 @@
+#reg-page .am-input-extra{
+    overflow: visible;
+}
+#reg-page .am-input-extra img{
+    height: 40px;
+    width: 120px;
+    margin-top: -10px;
+}

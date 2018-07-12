@@ -6,6 +6,7 @@ import store from './store'
 
 // routes
 import Home from './routes/Home'
+import Reg from './routes/User/Reg'
 
 const App = () => {
     return (
@@ -14,6 +15,7 @@ const App = () => {
                 <Router history={hashHistory}>
                     <Route path='/' component={Home}></Route>  
                     <Route path='/list' component={()=>'list'}></Route>  
+                    <Route path='/reg' component={Reg}></Route>  
                 </Router>
                 
             </Provider>        
