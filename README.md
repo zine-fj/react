@@ -21,5 +21,5 @@ redux-promise
 antd-mobile     # 支付宝控件
 babel-plugin-import  # 按需加载样式
 qs 
-rc-form
+rc-form         # 列表页面
 ```
