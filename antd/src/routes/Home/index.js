@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import { Carousel, WingBlank } from 'antd-mobile';
+import { Carousel, NavBar } from 'antd-mobile';
 
 class Home extends Component {
     state = {
@@ -41,7 +41,8 @@ class Home extends Component {
     render() {
         const {floorData} = this.state.datas
         return (
-            <div>
+            <div className="home-page">
+                 <NavBar mode="dark">NavBar</NavBar>
                 <Carousel
                     autoplay={false}
                     infinite

@@ -22,4 +22,9 @@ antd-mobile     # 支付宝控件
 babel-plugin-import  # 按需加载样式
 qs 
 rc-form         # 列表页面
+
+node-sass       # sass编译
+sass-loader     # webpack中sass
+node-less       # less编译
+less-loader     # webpack中less
 ```

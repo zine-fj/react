@@ -27,6 +27,26 @@ plugins:[['import', { libraryName: 'antd-mobile', style: 'css' }]]
 # 在js文件中通过require引用(require(./1.png))
 <img style={{width:'100%',height:'auto'}} src={require('../../assets/1.jpg')} alt=""/>
 ```
+2. sass安装使用
+```shell
+yarn add node-sass
+yarn add sass-loader
+
+在webpack.config.dev.js中添加
+{
+    test: /\.scss$/,
+    use: [
+      require.resolve('style-loader'),
+      {
+        loader: require.resolve('css-loader'),
+        options: {
+          importLoaders: 1,
+        },
+      },
+      { loader: require.resolve('sass-loader') }
+    ],
+},
+```
 
 #### 开发环境(暴露配置项)
 由于 create-react-app 为了“优雅”... ...隐藏了所有的webpack相关的配置文件，需要执行：

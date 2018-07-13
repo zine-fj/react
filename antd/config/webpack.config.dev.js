@@ -21,7 +21,8 @@ const publicPath = '/';
 const publicUrl = '';
 // Get environment variables to inject into our app.
 const env = getClientEnvironment(publicUrl);
-
+const theme = require(paths.appPackageJson).theme; // 加载主题配置
+console.log(theme)
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
 // The production configuration is different and lives in a separate file.
@@ -152,7 +153,7 @@ module.exports = {
 
               // 自己的配置
               plugins:[
-                ['import', { libraryName: 'antd-mobile', style: 'css' }]
+                ['import', { libraryName: 'antd-mobile', style: true }]
               ]
             },
           },
@@ -193,6 +194,30 @@ module.exports = {
               },
             ],
           },
+          {
+            test: /\.scss$/,
+            use: [
+              require.resolve('style-loader'),
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1,
+                },
+              },
+              {
+                loader: require.resolve('sass-loader')
+              }
+            ],
+          },
+          {
+            test: /\.less$/,
+            use: [
+                'style-loader',
+                'css-loader',
+                {loader: 'less-loader', options: {modifyVars: theme}},
+            ],
+            include: /node_modules/,
+        },
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
           // In production, they would get copied to the `build` folder.
