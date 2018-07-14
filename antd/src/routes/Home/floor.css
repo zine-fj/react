@@ -1,0 +1,9 @@
+.tit{
+    text-align: center;
+    font-size: 20px;
+    background: #ccc;
+}
+
+.item{
+    border: 1px solid #ccc;
+}

@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import { Carousel, NavBar } from 'antd-mobile';
-
+import './index.scss'
+import oStyle from './floor.css'
 class Home extends Component {
     state = {
         focus: [{},{},{}],
@@ -71,7 +72,7 @@ class Home extends Component {
                     <img style={{width:'100%',height:'auto'}} src={require('../../assets/1.jpg')} alt=""/>
                     
                     {/* 图标 */}
-                    <p>
+                    <p className="p3">
                         <span className='iconfont icon-rectangle390'></span>
                         我是图标
                     </p>
@@ -82,11 +83,11 @@ class Home extends Component {
                             // 默认数据里面如果没有floorData，不执行循环
                             floorData && floorData.map((ele,index)=>(
                                 <div key={index}>
-                                    <h3>{ele.tit}</h3>
+                                    <h3 className={oStyle.tit}>{ele.tit}</h3>
                                     <ul>
                                         {
                                             ele.pros.map((pro,i)=>(
-                                                <li key={i}>
+                                                <li key={i} className={oStyle.item}>
                                                     <p>{pro.name}</p>
                                                     <p>{pro.price}</p>
                                                 </li>

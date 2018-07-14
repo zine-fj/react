@@ -153,7 +153,7 @@ module.exports = {
 
               // 自己的配置
               plugins:[
-                ['import', { libraryName: 'antd-mobile', style: true }]
+                ['import', { libraryName: 'antd-mobile', style: 'css' }]
               ]
             },
           },
@@ -169,6 +169,8 @@ module.exports = {
               {
                 loader: require.resolve('css-loader'),
                 options: {
+                  // 开启css模块化
+                  modules:true,
                   importLoaders: 1,
                 },
               },
@@ -209,15 +211,16 @@ module.exports = {
               }
             ],
           },
-          {
-            test: /\.less$/,
-            use: [
-                'style-loader',
-                'css-loader',
-                {loader: 'less-loader', options: {modifyVars: theme}},
-            ],
-            include: /node_modules/,
-        },
+          // {
+          //   test: /\.less$/,
+          //   use: [
+          //       'style-loader',
+          //       'css-loader',
+          //       {loader: 'less-loader', options: {modifyVars: theme}},
+          //   ],
+          //   include: /node_modules/,
+          // },
+
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
           // In production, they would get copied to the `build` folder.

@@ -7,6 +7,7 @@ import store from './store'
 // routes
 import Home from './routes/Home'
 import Reg from './routes/User/Reg'
+import Cart from './routes/Cart'
 
 const App = () => {
     return (
@@ -16,6 +17,7 @@ const App = () => {
                     <Route path='/' component={Home}></Route>  
                     <Route path='/list' component={()=>'list'}></Route>  
                     <Route path='/reg' component={Reg}></Route>  
+                    <Route path='/Cart' component={Cart}></Route>  
                 </Router>
                 
             </Provider>        

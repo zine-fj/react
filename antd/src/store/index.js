@@ -1,14 +1,7 @@
-import {createStore} from 'redux'
+import {createStore,combineReducers} from 'redux'
+import * as reducers from './reducers'
 
-const reducer = (state={},action) => {
-    switch(action.type) {
-        case 'ss':
-            return state
-        default:
-            return state
-    }
-}
-
-const store = createStore(reducer)
+const myReducer = combineReducers(reducers); // 合并 reducer
+const store = createStore(myReducer)
 
 export default store

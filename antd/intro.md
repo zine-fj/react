@@ -73,7 +73,55 @@ yarn run eject
   }
 }
 ```
-**注意：**    
+
+
+
+## reducers
+(详见 store 文件夹)  
+1. 创建各个页面所用到的reducer，放在reducers里，同时存放一个index.js文件用来管理其reducer，以cart.js为例
+```shell
+const reducer = (state={cartData:[1]},action) => {
+    switch(action.type) {
+        case 'ss':
+            return state
+        default:
+            return state
+    }
+}
+
+export default reducer
+```
+2. 在index.js文件(reducers文件中)中 管理所有reducer
+```shell
+import cartReducer from './cart'
+import listReducer from './product'
+
+export {listReducer,cartReducer}
+```
+3. 在reducers文件夹外还有一个index.js用来合并、暴露reducers
+```shell
+import {createStore,combineReducers} from 'redux'
+import * as reducers from './reducers'
+
+const myReducer = combineReducers(reducers); // 合并 reducer
+const store = createStore(myReducer)
+
+export default store
+```
+4. 在所用页面引入
+```shell
+import {connect} from "react-redux"
+
+const mapStateToProps = (state)=>{
+    return {
+        cartData:state.cartReducer.cartData
+    }
+}
+
+export default connect(mapStateToProps)(Cart)
+```
+
+## 注意   
 1. 当所存储的为一对象时
 ```shell
 this.setState({
@@ -112,6 +160,25 @@ setCookie(复制的内容)
 ```
 * 在自己网站调试页面就能看到和他人网站一样的 cookie信息
 
+4. css模块化(css私有化)
+因为已经把css变成编码了，变成了唯一的一份样式
+* 在 ``webpack.config.dev.js`` .css 中，添加：
+```shell
+options: {
+    #  开启css模块化
+    modules:true,
+
+    importLoaders: 1,
+},
+```
+* 在所要使用的页面添加：
+```shell
+import oStyle from './floor.css'
+
+className={oStyle.tit}
+```
+建议：用 ``sass`` 写主要的全部的样式，部分页面尝试用 ``css模块化`` 构建。  
+注：目前有一个问题是 引入css模块化后，antd-mobile的样式就失效了，还不知道怎么解决？！！！
 
 
 
