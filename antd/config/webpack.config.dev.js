@@ -170,7 +170,7 @@ module.exports = {
                 loader: require.resolve('css-loader'),
                 options: {
                   // 开启css模块化
-                  modules:true,
+                  // modules:true,
                   importLoaders: 1,
                 },
               },

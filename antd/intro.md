@@ -138,7 +138,7 @@ const {floorData} = this.state.datas
 floorData && floorData.map((ele,index)=>())
 ```
 
-2. 让页面携带 cookie
+2. 让页面携带 cookie (fetch默认不带 cookie)
 ```shell
 fetch('',{
   method:'post',
@@ -179,6 +179,6 @@ className={oStyle.tit}
 ```
 建议：用 ``sass`` 写主要的全部的样式，部分页面尝试用 ``css模块化`` 构建。  
 注：目前有一个问题是 引入css模块化后，antd-mobile的样式就失效了，还不知道怎么解决？！！！
-
+5. onSelected时，Method为 put
 
 

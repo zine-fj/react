@@ -1,7 +1,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box}
 li {list-style: none}
 em { color: #f43}
-.content { background-color: #eee; padding: 0 5px;}
+.content { background-color: #fff; padding: 0 5px;}
 .cart-list { }
 .cart-item {background-color: #fff; margin:  5px 0; padding: 5px;}
 .pro-item { display: flex;justify-content: space-between;  padding: 3px; border-bottom: 1px dashed #ddd; height: 80px;}
