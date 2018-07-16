@@ -14,15 +14,12 @@ class Cart extends Component {
         }).then(res=>res.json()).then(data=>{
             console.log(data)
             // 判断有数据的时候再派发，把数据保存到 store
-            if(data.cart.gcpList) {
-                this.props.dispatch({
-                    type: 'CART_DATA',
-                    payload:{
-                        cartData: data.cart.gcpList
-                    }
-                })
-            }
-           
+            this.props.dispatch({
+                type: 'CART_DATA',
+                payload:{
+                    cartData: data.cart.gcpList || []
+                }
+            })
         })
     }
     componentDidMount() {
@@ -51,9 +48,10 @@ class Cart extends Component {
                     <ul className="cart-list">
                         {
                             cartData.map((ele,index)=>{
+                                let id = ele.itemList[0].id;
                                 return <li key={index} className='cart-item'>
                                             <div>
-                                                <input type="checkbox" checked={ele.isSelected} onChange={(ev)=>this.ItemChange(ev,ele.itemList[0].id)}/>
+                                                <input type="checkbox" checked={ele.isSelected} onChange={(ev)=>this.ItemChange(ev,id)}/>
                                                 <em>$999</em>
                                             </div>
                                             <ul>
@@ -74,7 +72,7 @@ class Cart extends Component {
                                                 }
                                             </ul>
                                             <div className='item-ctrl'>
-                                                <a href="javascript:;">删除</a>
+                                                <a href="javascript:;" onClick={()=>this.itemDel(id)}>删除</a>
                                                 <div>
                                                     <Stepper
                                                     style={{ width: '40%', minWidth: '100px' }}
@@ -82,7 +80,7 @@ class Cart extends Component {
                                                     max={10}
                                                     min={1}
                                                     value={ele.itemList[0].number}
-                                                    onChange={(val)=>console.log(val)}
+                                                    onChange={(number)=>this.changeNum(id,number)}
                                                     />
                                                 </div>
                                             </div>
@@ -105,6 +103,8 @@ class Cart extends Component {
             </div>
         )
     }
+
+    // 单选
     ItemChange(ev,id) {
         // 发起数据请求，修改 选中状态
         console.log(ev.target.checked);
@@ -126,6 +126,7 @@ class Cart extends Component {
             }
         })
     }
+    // 全选
     allChange(ev) {
         // 全选和反选
         if(ev.target.checked) {
@@ -135,6 +136,32 @@ class Cart extends Component {
             
         }
         let url = `loho88/cart/${status}/`
+        fetch(url,{
+            method:'put',
+            credentials: 'include'
+        }).then(res=>res.json()).then(data=>{
+            console.log(data)
+            if(data.status == 1) {
+                this.getCartData()
+            }
+        })
+    }
+    // 删除
+    itemDel(id) {
+        let url = `loho88/cart/item/${id}`
+        fetch(url,{
+            method:'delete',
+            credentials: 'include'
+        }).then(res=>res.json()).then(data=>{
+            console.log(data)
+            if(data.status == 1) {
+                this.getCartData()
+            }
+        })
+    }
+    // 按钮添加减少
+    changeNum(id,number) {
+        let url = `loho88/m-loho88/cart/item/${id}/${number}`
         fetch(url,{
             method:'put',
             credentials: 'include'

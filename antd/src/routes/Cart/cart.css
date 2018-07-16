@@ -1,18 +1,80 @@
-* { margin: 0; padding: 0; box-sizing: border-box}
-li {list-style: none}
-em { color: #f43}
-.content { background-color: #fff; padding: 0 5px;}
-.cart-list { }
-.cart-item {background-color: #fff; margin:  5px 0; padding: 5px;}
-.pro-item { display: flex;justify-content: space-between;  padding: 3px; border-bottom: 1px dashed #ddd; height: 80px;}
-.item-info { flex: 1; padding: 0 3px;}
-.item-pic  { width: 80px; height: auto}
-.item-ctrl { display: flex;justify-content: space-between; height: 36px;line-height:36px;}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
 
+li {
+    list-style: none
+}
 
-.cart-ctrl { display: flex;justify-content: space-between; height: 40px;line-height: 40px;background: #fff; }
+em {
+    color: #f43
+}
 
+.content {
+    background-color: #fff;
+    padding: 0 5px;
+}
 
-.footer { display: flex; position: fixed; bottom: 0;  width: 100%; left: 0; background: #fff; justify-content: space-between; height: 40px;line-height: 40px;}
-.cart-btn { text-align: center;  background: red; color: #fff; font-size: 18px; width: 60px;
+.cart-list {}
+
+.cart-item {
+    background-color: #fff;
+    margin: 5px 0;
+    padding: 5px;
+}
+
+.pro-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px;
+    border-bottom: 1px dashed #ddd;
+    height: 80px;
+}
+
+.item-info {
+    flex: 1;
+    padding: 0 3px;
+}
+
+.item-pic {
+    width: 80px;
+    height: auto
+}
+
+.item-ctrl {
+    display: flex;
+    justify-content: space-between;
+    height: 36px;
+    line-height: 36px;
+    border-bottom: 1px dashed #ddd;
+}
+
+.cart-ctrl {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    line-height: 40px;
+    background: #fff;
+}
+
+.footer {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    background: #fff;
+    justify-content: space-between;
+    height: 40px;
+    line-height: 40px;
+}
+
+.cart-btn {
+    text-align: center;
+    background: red;
+    color: #fff;
+    font-size: 18px;
+    width: 60px;
 }

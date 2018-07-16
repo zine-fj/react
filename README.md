@@ -28,3 +28,8 @@ sass-loader     # webpack中sass
 node-less       # less编译
 less-loader     # webpack中less
 ```
+# Method 有四种方式
+1. post：增，提交数据
+2. delete：删，删除数据
+3. put：改，修改数据
+4. get：查，获取数据
