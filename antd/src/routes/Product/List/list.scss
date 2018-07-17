@@ -1,0 +1,32 @@
+#list-page{
+
+    .sub-header{
+
+    }
+
+    .price{
+
+    }
+    .product-list{
+        overflow: hidden;
+    }
+    .product-item{
+        float: left;
+        width: 50%;
+        height: 70vw;
+        background: #fff;
+        a{
+            display: block;
+        }
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+    :nth-child(2n) {
+        padding-left: 2px;
+    }
+    :nth-child(2n+1) {
+        padding-right: 2px;
+    }
+}

@@ -8,6 +8,7 @@ import store from './store'
 import Home from './routes/Home'
 import Reg from './routes/User/Reg'
 import Cart from './routes/Cart'
+import ProuctList from './routes/Product/List'
 
 const App = () => {
     return (
@@ -15,9 +16,9 @@ const App = () => {
             <Provider store={store}>
                 <Router history={hashHistory}>
                     <Route path='/' component={Home}></Route>  
-                    <Route path='/list' component={()=>'list'}></Route>  
                     <Route path='/reg' component={Reg}></Route>  
                     <Route path='/Cart' component={Cart}></Route>  
+                    <Route path='/prouctlist' component={ProuctList}></Route>  
                 </Router>
                 
             </Provider>        
