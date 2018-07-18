@@ -1,7 +1,14 @@
 #list-page{
 
     .sub-header{
-
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        .active,
+        .selected{
+            color: red;
+        }
     }
 
     .price{
@@ -14,19 +21,25 @@
         float: left;
         width: 50%;
         height: 70vw;
-        background: #fff;
+       
         a{
             display: block;
+            background: #fff;
+            height: 100%;
         }
         img{
             width: 100%;
             height: auto;
         }
+
+        padding: 4px 0;
+
+        &:nth-child(2n) {
+            padding-left: 3px;
+        }
+        &:nth-child(2n+1) {
+            padding-right: 3px;
+        }
     }
-    :nth-child(2n) {
-        padding-left: 2px;
-    }
-    :nth-child(2n+1) {
-        padding-right: 2px;
-    }
+    
 }
