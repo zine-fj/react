@@ -55,7 +55,8 @@ yarn run eject
 ```
 **注意:**   
 在 ``git`` 环境下，执行之前要确定你的代码已经提交(commit)了；否则会报错   
-在非 ``git`` 环境下，执行 ``yarn start`` 后可能会报错：缺少模块 ``babel-loader``，此时安装该模块就好了
+在非 ``git`` 环境下，执行 ``yarn start`` 后可能会报错：缺少模块 ``babel-loader``，此时安装该模块就好了。  
+实在不行，可降级安装：``yarn add babel-loader@6.0.1``
 
 然后查看项目结构多了scripts和config目录，package.json也会有变化  
 
