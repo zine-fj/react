@@ -32,15 +32,17 @@ babel-plugin-import  # 按需加载样式
 antd-mobile     # 支付宝控件
 import { 按需引入 } from "antd-mobile"
 
-qs              # 对象转换为字符串
+qs              # 对象转换为字符串( 对象{a:1,b:2} => 键值对a=1&b=2))
 import qs from "qs"
 
 rc-form         # 列表页面
 
 node-sass       # sass编译
 sass-loader     # webpack中sass
+
 less            # less编译
 # 注意： 在用 less 定制主题时，可能会报错，此时可以把 less 版本降低到 3 以下即可
+yarn add less@2.7.3
 
 less-loader     # webpack中less
 ```
