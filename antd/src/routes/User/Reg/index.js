@@ -43,6 +43,7 @@ class Reg extends Component {
                 // 模拟form表单 键值对的方式提交数据
                 "Content-Type":"application/x-www-form-urlencoded"
             },
+            // qs.stringify：将对象转换成字符串
             body: qs.stringify(params)
         }).then(res=>res.json()).then(data=>{
             console.log(data)
