@@ -21,6 +21,8 @@ yarn add babel-plugin-import
 ```shell
 plugins:[['import', { libraryName: 'antd-mobile', style: 'css' }]]
 ```
+注：当要改变主题样式时，要将 plugins 中的 ``style: 'css'  =>  style: true``
+
 #### 其他
 1. 图片加载问题
 ```shell
@@ -46,6 +48,32 @@ yarn add sass-loader
       { loader: require.resolve('sass-loader') }
     ],
 },
+```
+3. less安装使用
+```shell
+yarn add less@2.7.3
+yarn add less-loader
+
+在 package.json 中添加
+# 配置主题样式
+"theme": {
+    "brand-primary": "red",
+    "color-text-base": "#333"
+}
+
+在webpack.config.dev.js中添加
+# 加载主题配置
+const theme = require(paths.appPackageJson).theme 
+{
+	test: /\.less$/,
+	use: [
+		'style-loader',
+		'css-loader',
+		{loader: 'less-loader', options: {modifyVars: theme}},
+	],
+	include: /node_modules/,
+},
+
 ```
 
 #### 开发环境(暴露配置项)
