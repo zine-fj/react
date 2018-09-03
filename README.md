@@ -13,14 +13,28 @@
 
 # 目前安装的模块依赖
 ```shell
-react-router@3  # 路由
+react-router@3  # 路由  
+import {Router,Route,hashHistory} from "react-router"
+
 fetch-jsonp     # jsonp
+import fetchJson from "fetch-jsonp"
+
 redux           # 数据管理
+import {createStore} from "redux"
+
 react-redux     # react数据管理
+import {Provider} from "react-redux"
+
 redux-promise 
-antd-mobile     # 支付宝控件
+
 babel-plugin-import  # 按需加载样式
-qs 
+
+antd-mobile     # 支付宝控件
+import { 按需引入 } from "antd-mobile"
+
+qs              # 对象转换为字符串
+import qs from "qs"
+
 rc-form         # 列表页面
 
 node-sass       # sass编译
