@@ -39,7 +39,9 @@ rc-form         # 列表页面
 
 node-sass       # sass编译
 sass-loader     # webpack中sass
-node-less       # less编译
+less            # less编译
+注意： 在用 less 定制主题时，可能会报错，此时可以把 less 版本降低到 3 以下即可
+
 less-loader     # webpack中less
 ```
 # Method 有四种方式
