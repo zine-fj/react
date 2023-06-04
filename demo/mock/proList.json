@@ -1,0 +1,30 @@
+[
+  {
+    "classId": "yifu",
+    "className": "衣服",
+    "proList": [
+      "衬衫",
+      "T恤",
+      "裤子",
+      "棉服"
+    ]  
+  },
+  {
+    "classId": "dianzi",
+    "className": "电子",
+    "proList": [
+      "手机",
+      "电脑",
+      "手表",
+      "耳机"
+    ]  
+  },
+  {
+    "classId": "jiaju",
+    "className": "家具",
+    "proList": [
+      "桌子",
+      "椅子"
+    ]
+  }
+]

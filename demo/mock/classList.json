@@ -1,0 +1,14 @@
+[
+  {
+    "classId": "yifu",
+    "className": "衣服"  
+  },
+  {
+    "classId": "dianzi",
+    "className": "电子"  
+  },
+  {
+    "classId": "jiaju",
+    "className": "家具"  
+  }
+]

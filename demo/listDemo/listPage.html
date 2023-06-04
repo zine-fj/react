@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" Countent="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" Countent="ie=edge" />
+    <title>list demo</title>
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+    <style>
+      ul,li {
+        list-style: none;
+      }
+      .class-list {
+        display: flex;
+      }
+      .class-list li {
+        margin: 0 20px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      class Header extends React.Component {
+        render() {
+          return <h2>{this.props.children}</h2>;
+        }
+      }
+
+      class Content extends React.Component {
+        render() {
+          return <div>{this.props.children}</div>;
+        }
+      }
+
+      let Events = {};
+      class ClassList extends React.Component {
+        constructor(props) {
+          super(props);
+          this.handleClick = this.handleClick.bind(this)
+        }
+        handleClick(id) {
+          let _ProList = this.props.allData.find((ele) => {
+            return id === ele.classId;
+          }).proList;
+          console.log(id, _ProList);
+          Events.changeNum(_ProList);
+        }
+        render() {
+          const { classData } = this.props;
+          return (
+            <ul className="class-list">
+              {classData &&
+                classData.map((ele, index) => {
+                  return (
+                    <li
+                      key={index}
+                      onClick={() => this.handleClick(ele.classId)}
+                    >
+                      {ele.className}
+                    </li>
+                  );
+                })}
+            </ul>
+          );
+        }
+      }
+
+      class ProList extends React.Component {
+        render() {
+          const { listData } = this.props;
+          return (
+            <ul className="pro-list">
+              {listData &&
+                listData.map((ele, index) => {
+                  return <li key={index}>{ele}</li>;
+                })}
+            </ul>
+          );
+        }
+      }
+
+      class ListPage extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            classData: [{ className: "衣服" }],
+            listData: [],
+            allData: [],
+          };
+        }
+
+        componentDidMount() {
+          fetch("../mock/classList.json")
+            .then((res) => res.json())
+            .then((res) => {
+              console.log("分类列表：", res);
+              this.setState({
+                classData: res,
+              });
+            });
+
+          fetch("../mock/proList.json")
+            .then((res) => res.json())
+            .then((res) => {
+              console.log("所有列表：", res);
+              this.setState({
+                allData: res,
+              });
+            });
+        }
+        componentWillMount() {
+          Events.changeNum = (newData) => {
+            this.setState({
+              listData: newData,
+            });
+          };
+        }
+
+        render() {
+          const { classData, listData, allData } = this.state;
+          return (
+            <div id="list-page">
+              <Header>商品列表</Header>
+              <ClassList classData={classData} allData={allData} />
+              <Content>
+                <ProList listData={listData} />
+              </Content>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<ListPage />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

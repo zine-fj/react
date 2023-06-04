@@ -1,0 +1,28 @@
+[
+  {
+    "title": "推荐商品",
+    "proData": [
+      {
+        "name": "mac book pro",
+        "price": 10000
+      },
+      {
+        "name": "ipad pro 2022",
+        "price": 5666
+      }
+    ]
+  },
+  {
+    "title": "精选商品",
+    "proData": [
+      {
+        "name": "iphone",
+        "price": 33333
+      },
+      {
+        "name": "xiaomi",
+        "price": 44444
+      }
+    ]
+  }
+]

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>案例组合</title>
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      // 头部
+      class Header extends React.Component {
+        render() {
+          return <h1 className="header">{this.props.HName}</h1>;
+        }
+      }
+      // 尾部
+      class Footer extends React.Component {
+        render() {
+          return <h1 className="footer">{this.props.FName}</h1>;
+        }
+      }
+      // 楼层
+      class Floor extends React.Component {
+        render() {
+          const { data } = this.props;
+          return (
+            <div>
+              <h2>{data.title}</h2>
+              <ul>
+                {data.proData.map((ele, index) => {
+                  return (
+                    <li key={index}>
+                      <p>{ele.name}</p>
+                      <p>价格：{ele.price}</p>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          );
+        }
+      }
+      // 内容
+      class Content extends React.Component {
+        render() {
+          return <div className="content">{this.props.children}</div>;
+        }
+      }
+
+      // 页面
+      class IndexPage extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            floorData: [],
+          };
+        }
+        componentWillMount() {
+          fetch("../mock/floor-data.json")
+            .then((res) => res.json())
+            .then((res) => {
+              console.log("数据：", res);
+              this.setState({
+                floorData: res,
+              });
+            });
+        }
+        render() {
+          let floorData = this.state.floorData;
+          return (
+            <div>
+              <Header HName="我是头" />
+              <Content>
+                <h2>我是内容</h2>
+                {floorData.map((ele, num) => {
+                  return <Floor data={ele} key={num} />;
+                })}
+              </Content>
+              <Footer FName="我是脚" />
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<IndexPage />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
