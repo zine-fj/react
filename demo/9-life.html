@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>react life</title>
+    <script src="build/react.development.js"></script>
+    <script src="build/react-dom.development.js"></script>
+    <script src="build/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+
+      class ODiv extends React.Component {
+        componentWillUnmount() {
+          console.log('oDiv componentWillUnmount')
+        }
+        render() {
+          return <h1>hello oDiv</h1>
+        }
+      }
+    
+      class MyComponent extends React.Component {
+        constructor(props) {
+          super(props)
+
+          this.state = {
+            liked: true
+          }
+          this.handleClick = this.handleClick.bind(this);
+        }
+        handleClick() {
+          this.setState({
+            liked: !this.state.liked
+          })
+        }
+
+        componentDidMount() {
+          console.log('--- componentDidMount ----')
+        }
+        componentDidUpdate() {
+          console.log('--- componentDidUpdate ----')
+        }
+        render() {
+          console.log('--- render ----')
+          let text = this.state.liked ? '喜欢' : '不喜欢'
+          let theDiv = this.state.liked ? <ODiv /> : '';
+          return (
+            <div>
+              {theDiv}
+
+              <p onClick={this.handleClick}>我{text}你</p>
+            </div>
+          )
+        }
+      }
+      ReactDOM.render(
+        <MyComponent />,
+        document.getElementById('example')
+      )
+    </script>
+  </body>
+</html>

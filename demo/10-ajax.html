@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>react life</title>
+    <script src="build/react.development.js"></script>
+    <script src="build/react-dom.development.js"></script>
+    <script src="build/babel.min.js"></script>
+    <script src="build/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      class MyAjax extends React.Component {
+        constructor(props) {
+          super(props)
+          this.state = {
+            imageUrl: ''
+          }
+        }
+
+        componentDidMount() {
+          $.get(this.props.source, res => {
+            console.log(res)
+            this.setState({
+              imageUrl: res.message
+            })
+          })
+        }
+
+        render() {
+          return (
+            <img src={this.state.imageUrl} />
+          )
+        }
+      }
+
+      ReactDOM.render(
+        <MyAjax source="https://dog.ceo/api/breeds/image/random" />,
+        document.getElementById('example')
+      )
+    </script>
+  </body>
+</html>

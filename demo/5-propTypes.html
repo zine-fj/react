@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>react propTypes</title>
+    <script src="build/react.development.js"></script>
+    <script src="build/react-dom.development.js"></script>
+    <script src="build/babel.min.js"></script>
+    <script src="build/prop-types.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      let theName = 'tingting';
+
+
+      class MyTitle extends React.Component {
+        static propType = {
+          name: PropTypes.string.isRequired
+        }
+        render() {
+          const {name} = this.props;
+          return <h1>hi my name is {name}</h1>
+        }
+      }
+      ReactDOM.render(
+        <MyTitle name={theName} />,
+        document.getElementById('example')
+      )
+    </script>
+  </body>
+</html>
