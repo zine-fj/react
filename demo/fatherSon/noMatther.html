@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" Countent="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" Countent="ie=edge" />
+    <title>没有关系的组件调用</title>
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      // 思路：
+      // 1. Event Bus
+
+      let Events = {};
+      class MyButton extends React.Component {
+        constructor(props) {
+          super(props);
+          this.handleClick = this.handleClick.bind(this);
+        }
+        handleClick() {
+          Events.changeNum(100);
+        }
+        render() {
+          return <button onClick={this.handleClick}>add</button>;
+        }
+      }
+      class Count extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            num: 1,
+          };
+        }
+        componentWillMount() {
+          Events.changeNum = (newNum) => {
+            this.setState({
+              num: this.state.num + newNum,
+            });
+          };
+        }
+        render() {
+          return <div>{this.state.num}</div>;
+        }
+      }
+
+      class MyHome extends React.Component {
+        render() {
+          return (
+            <div>
+              <Count />
+              <MyButton />
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<MyHome />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

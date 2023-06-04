@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>子组件调用父组件</title>
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      // 思路：
+      // 1. 子组件想要改变父组件的 num。
+      // 2. 父组件有一个 clickNum 方法。
+      // 3. 把 clickNum 方法绑定到子组件的 changeNum 属性上。
+      // 4. 子组件里面调用 changeNum。
+      class MyButton extends React.Component {
+        render() {
+          return <button onClick={this.props.changeNum}>add</button>;
+        }
+      }
+
+      class MyHome extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            num: 1,
+          };
+          this.clickNum = this.clickNum.bind(this);
+        }
+        clickNum() {
+          this.setState({
+            num: this.state.num + 1,
+          });
+        }
+        render() {
+          return (
+            <div>
+              <p>num: {this.state.num}</p>
+              <MyButton changeNum={this.clickNum} />
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<MyHome />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

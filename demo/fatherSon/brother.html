@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" Countent="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" Countent="ie=edge" />
+    <title>兄弟组件调用</title>
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      // 思路：
+      // 1. 中间人模式。
+      class MyButton extends React.Component {
+        render() {
+          return <button onClick={this.props.changeNum}>add</button>;
+        }
+      }
+      class Count extends React.Component {
+        render() {
+          return <div>{this.props.children}</div>
+        }
+      }
+
+      class MyHome extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            num: 1,
+          };
+          this.clickNum = this.clickNum.bind(this);
+        }
+        clickNum() {
+          this.setState({
+            num: this.state.num + 1,
+          });
+        }
+        render() {
+          return (
+            <div>
+              <Count>num: {this.state.num}</Count>
+              <MyButton changeNum={this.clickNum} />
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<MyHome />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
