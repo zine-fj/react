@@ -1,5 +1,6 @@
 import React from "react";
 import { Header, Content, Footer } from "../../components/public";
+import {Link} from "react-router-dom"
 import "./list-page.css";
 
 class ClassList extends React.Component {
@@ -39,7 +40,7 @@ class ProList extends React.Component {
     return (
       <ul className="pro-list">
         {dogProList.map((ele) => {
-          return <img key={ele} src={ele} alt="" />;
+          return <Link to={`/detail?src=${ele}&id=1`}  key={ele}><img src={ele} alt="" /></Link>;
         })}
       </ul>
     );

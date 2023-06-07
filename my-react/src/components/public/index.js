@@ -3,15 +3,30 @@ import "./public.css";
 import { NavLink } from "react-router-dom";
 
 class Header extends Component {
+  static defaultProps = {
+    hasBack: true
+  }
+  clickBack() {
+    console.log(this.props)
+  }
   render() {
+    const { hasBack, rightCont } = this.props;
+
+    
+
     return (
       <div className="header">
         <ul>
           <li className="header-btn">
-            <NavLink to="">{"<"}</NavLink>
+            {
+              hasBack ? <span onClick={()=>this.clickBack()}>{"<"}</span> : ''
+            }
+            
           </li>
           <li className="header-tit">{this.props.children}</li>
-          <li className="header-btn"></li>
+          <li className="header-btn">
+            {rightCont}
+          </li>
         </ul>
       </div>
     );
@@ -70,11 +85,7 @@ class Footer extends Component {
 
 function Content(props) {
   //普通的构造函数  (纯组件，视图组件)
-  return (
-    <div className="content">
-      {props.children}
-    </div>
-  );
+  return <div className="content">{props.children}</div>;
 }
 
 export { Header, Content, Footer };

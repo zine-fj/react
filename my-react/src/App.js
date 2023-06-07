@@ -1,9 +1,10 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
 import ListPage from "./pages/ListPage";
 import CartPage from "./pages/CartPage";
 import MinePage from "./pages/MinePage";
+import DetailPage from "./pages/DetailPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/list" element={<ListPage />}></Route>
         <Route path="/cart" element={<CartPage />}></Route>
         <Route path="/mine" element={<MinePage />}></Route>
+        <Route path="/detail" element={<DetailPage />}></Route>
       </Routes>
     </div>
   );
