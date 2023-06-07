@@ -72,7 +72,7 @@ function Content(props) {
   //普通的构造函数  (纯组件，视图组件)
   return (
     <div className="content">
-      {props.children} ,{props.tit}
+      {props.children}
     </div>
   );
 }
