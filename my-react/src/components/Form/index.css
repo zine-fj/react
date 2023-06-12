@@ -1,0 +1,5 @@
+.lm-input-item { border-bottom: 1px solid #ccc; padding: 10px; line-height: 40px; display: flex; background-color: #fff;font-size: 16px; }
+.lm-input-tit { width: 80px; text-align: right; padding-right: 5px; }
+.lm-input-cont  { flex: 1;  height: 40px;font-size: 16px; padding:12px 10px; color: #666}
+.lm-input-arrow { width: 30px; text-align: right}
+.test-val {text-align: center; line-height: 2; color: #e93}

@@ -1,37 +1,38 @@
 import React, { Component } from "react";
 import "./public.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
-class Header extends Component {
-  static defaultProps = {
-    hasBack: true
-  }
-  clickBack() {
-    console.log(this.props)
-  }
-  render() {
-    const { hasBack, rightCont } = this.props;
+function Header(props) {
+  const navigate = useNavigate();
 
-    
+  const clickRight = () => {
+    navigate(props.rightUrl)
+  };
 
-    return (
-      <div className="header">
-        <ul>
-          <li className="header-btn">
-            {
-              hasBack ? <span onClick={()=>this.clickBack()}>{"<"}</span> : ''
-            }
-            
-          </li>
-          <li className="header-tit">{this.props.children}</li>
-          <li className="header-btn">
-            {rightCont}
-          </li>
-        </ul>
-      </div>
-    );
+  const clickBack = () => {
+    navigate(-1)
   }
+
+  const { hasBack, rightCont } = props;
+  return (
+    <div className="header">
+      <ul>
+        <li className="header-btn">
+          {hasBack ? <span onClick={clickBack.bind(this)}>{"<"}</span> : ""}
+        </li>
+        <li className="header-tit">{props.children}</li>
+        <li className="header-btn" onClick={() => clickRight()}>
+          {rightCont}
+        </li>
+      </ul>
+    </div>
+  );
 }
+
+// 设置默认值
+Header.defaultProps = {
+  hasBack: true,
+};
 
 class Footer extends Component {
   render() {
