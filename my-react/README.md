@@ -123,8 +123,34 @@ Header.defaultProps = {
 1. 单个品种下随机 6 张图片：
    `https://dog.ceo/api/breed/hound/${id}/images/random/6`
 
-## redux
 
+## 路由
+### 下载
+```js
+npm i react-router-dom
+```
+### 用法
+```js
+// index.js
+import { BrowserRouter } from 'react-router-dom';
+<BrowserRouter>
+  <App />
+</BrowserRouter>
+
+// App.js
+import { Routes, Route } from "react-router-dom";
+
+import HomePage from "./pages/HomePage";
+import ListPage from "./pages/ListPage";
+
+<div className="App">
+  <Routes>
+    <Route path="/" element={<HomePage />}></Route>
+    <Route path="/list" element={<ListPage />}></Route>
+  </Routes>
+</div>
+```
+## redux
 ### 下载
 
 ```js
