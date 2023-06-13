@@ -139,11 +139,9 @@ import { createStore } from "redux";
 // 管理员 reducer
 let reducer = function (state = { price: 15000 }, action) {
   switch (action.type) {
-    case "borrow13000":
-      return { price: state.price - 13000 };
-    case "borrow15000":
-      console.log("借给你，我就没钱了");
-      return state;
+    case "borrow":
+      let price = action.payload.price;
+      return { price: state.price - price };
     // 不能预测的结果，就不管它
     default:
       return state;
@@ -167,7 +165,7 @@ let xiaoxin = {
 xiaoxin.sub();
 
 // 行为: action 借13000
-const action = { type: "borrow13000" };
+const action = { type: "borrow", payload: {price: 1000} };
 
 setTimeout(() => {
   // 发起请求
@@ -176,7 +174,7 @@ setTimeout(() => {
 
 setTimeout(() => {
   // 发起请求
-  store.dispatch({ type: "borrow15000" });
+  store.dispatch({ type: "borrow", payload: {price: 1000} });
 }, 1000);
 
 console.log(store.getState());
