@@ -23,7 +23,9 @@ npm start
 │   ├── ...
 ├── src
 │   ├── components // 公用组件
+│   ├── ├── ClassList // 分类列表
 │   ├── ├── Form // 表单组件
+│   ├── ├── ProList // 产品列表
 │   ├── ├── public // 公用的头部、底部、中间内容
 │   ├── pages // 公用组件
 │   ├── ├── ListPage // 列表页面
@@ -32,6 +34,8 @@ npm start
 │   ├── ├── HomePage.js // 首页
 │   ├── ├── LoginPage.js // 登录
 │   ├── ├── MinePage.js // 我的
+│   ├── store // 公用组件
+│   ├── ├── index.js // redux配置
 │   ├── App.js // 放置路由集合的入口文件
 │   ├── App.test.js //
 │   ├── index.js // 页面入口
@@ -44,6 +48,11 @@ npm start
 ```
 
 ### 常用写法
+
+注意：
+
+1. 函数式编程，请看 CartPage.js
+2. 组件式编程，请看 ListPage
 
 #### 点击事件绑定
 
@@ -123,19 +132,22 @@ Header.defaultProps = {
 1. 单个品种下随机 6 张图片：
    `https://dog.ceo/api/breed/hound/${id}/images/random/6`
 
-
 ## 路由
+
 ### 下载
+
 ```js
 npm i react-router-dom
 ```
+
 ### 用法
+
 ```js
 // index.js
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from "react-router-dom";
 <BrowserRouter>
   <App />
-</BrowserRouter>
+</BrowserRouter>;
 
 // App.js
 import { Routes, Route } from "react-router-dom";
@@ -148,9 +160,11 @@ import ListPage from "./pages/ListPage";
     <Route path="/" element={<HomePage />}></Route>
     <Route path="/list" element={<ListPage />}></Route>
   </Routes>
-</div>
+</div>;
 ```
+
 ## redux
+
 ### 下载
 
 ```js
@@ -191,7 +205,7 @@ let xiaoxin = {
 xiaoxin.sub();
 
 // 行为: action 借13000
-const action = { type: "borrow", payload: {price: 1000} };
+const action = { type: "borrow", payload: { price: 1000 } };
 
 setTimeout(() => {
   // 发起请求
@@ -200,8 +214,69 @@ setTimeout(() => {
 
 setTimeout(() => {
   // 发起请求
-  store.dispatch({ type: "borrow", payload: {price: 1000} });
+  store.dispatch({ type: "borrow", payload: { price: 1000 } });
 }, 1000);
 
 console.log(store.getState());
+```
+
+## react-redux
+
+### 下载
+
+```js
+npm i react-redux
+```
+
+### 用法
+
+- 第一步
+
+```js
+// App.js
+import store from "./store";
+import { Provider } from "react-redux";
+
+<div className="App">
+  {/* 通过 Provider 给每个页面提供 store */}
+  <Provider store={store}>
+    <Routes>
+      <Route path="/" element={<HomePage />}></Route>
+      ...
+    </Routes>
+  </Provider>
+</div>;
+```
+
+- 第二步
+
+```js
+// 新建 store 文件夹
+// 具体参考 store 中写法
+```
+
+- 第三步
+
+```js
+// 在具体页面中（CartPage.js）
+import { connect } from "react-redux";
+
+// 具体代码中
+props.dispatch({
+  type: "PRO_LIST_DATA",
+  payload: {
+    listData: message,
+  },
+});
+
+// 传递store的state给组件的props
+function mapStateToProps(state) {
+  const { classData, classId, listData } = state;
+  return {
+    classData,
+    listData,
+    classId,
+  };
+}
+export default connect(mapStateToProps)(CartPage);
 ```

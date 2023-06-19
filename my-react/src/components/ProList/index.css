@@ -1,0 +1,12 @@
+.pro-list {
+  width: 100%;
+  height: calc(100% - 30px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.pro-list img {
+  display: block;
+  width: 60%;
+  height: auto;
+  margin: 20px auto;
+}

@@ -1,0 +1,16 @@
+.class-list {
+  display: flex;
+  /* justify-content: space-around; */
+  height: 30px;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  overflow-x: auto;
+}
+.class-list li {
+  flex: none;
+  height: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+}

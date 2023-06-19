@@ -40,7 +40,7 @@ const Cont = () => {
 };
 
 const Button = () => {
-  const [borrowPrice, setBorrowPrice] = useState(0);
+  const [borrowPrice, setBorrowPrice] = useState(100);
   const changePrice = (ev) => {
     setBorrowPrice(ev.target.value);
   };
